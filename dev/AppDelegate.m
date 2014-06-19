@@ -7,12 +7,20 @@
 //
 
 #import "AppDelegate.h"
+#import "RootTabBarController.h"
 
-@implementation AppDelegate
+@implementation AppDelegate{
+
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    _dataModel = [NSMutableArray array];
+//    [_dataModel addObject:[NSString stringWithFormat:@"First Object"]];
+    NSLog([NSString stringWithFormat:@"dataModel size %lu", (unsigned long)[_dataModel count]]);
+    ((RootTabBarController *)self.window.rootViewController).dataModel = _dataModel;
+    
     return YES;
 }
 							

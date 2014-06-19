@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC720FA4194FAD8F0044E84F /* ListViewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC720FA3194FAD8F0044E84F /* ListViewTableViewController.m */; };
+		EC720FAA194FB25A0044E84F /* RootTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC720FA9194FB25A0044E84F /* RootTabBarController.m */; };
+		EC720FAE194FD1A50044E84F /* ListViewNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC720FAD194FD1A50044E84F /* ListViewNavigationController.m */; };
+		EC720FB11950D4760044E84F /* AddItemToListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC720FB01950D4760044E84F /* AddItemToListViewController.m */; };
+		EC720FB41950EA4B0044E84F /* DataModelElement.m in Sources */ = {isa = PBXBuildFile; fileRef = EC720FB31950EA4B0044E84F /* DataModelElement.m */; };
 		ECDD27311948B56F00575DF6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECDD27301948B56F00575DF6 /* Foundation.framework */; };
 		ECDD27331948B56F00575DF6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECDD27321948B56F00575DF6 /* CoreGraphics.framework */; };
 		ECDD27351948B56F00575DF6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECDD27341948B56F00575DF6 /* UIKit.framework */; };
@@ -15,14 +20,17 @@
 		ECDD27411948B56F00575DF6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDD27401948B56F00575DF6 /* AppDelegate.m */; };
 		ECDD27441948B56F00575DF6 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECDD27421948B56F00575DF6 /* Main_iPhone.storyboard */; };
 		ECDD27471948B56F00575DF6 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECDD27451948B56F00575DF6 /* Main_iPad.storyboard */; };
-		ECDD274A1948B56F00575DF6 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDD27491948B56F00575DF6 /* FirstViewController.m */; };
-		ECDD274D1948B56F00575DF6 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDD274C1948B56F00575DF6 /* SecondViewController.m */; };
+		ECDD274A1948B56F00575DF6 /* TracksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDD27491948B56F00575DF6 /* TracksViewController.m */; };
 		ECDD274F1948B56F00575DF6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECDD274E1948B56F00575DF6 /* Images.xcassets */; };
 		ECDD27561948B56F00575DF6 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECDD27551948B56F00575DF6 /* XCTest.framework */; };
 		ECDD27571948B56F00575DF6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECDD27301948B56F00575DF6 /* Foundation.framework */; };
 		ECDD27581948B56F00575DF6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECDD27341948B56F00575DF6 /* UIKit.framework */; };
 		ECDD27601948B56F00575DF6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ECDD275E1948B56F00575DF6 /* InfoPlist.strings */; };
 		ECDD27621948B56F00575DF6 /* devTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDD27611948B56F00575DF6 /* devTests.m */; };
+		ECDD276C1948C3EB00575DF6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECDD276B1948C3EB00575DF6 /* MapKit.framework */; };
+		ECDD276F1948C6E600575DF6 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDD276E1948C6E600575DF6 /* Location.m */; };
+		ECDD27721948C70B00575DF6 /* LocationDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDD27711948C70B00575DF6 /* LocationDataController.m */; };
+		ECDD27741948CA8A00575DF6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECDD27731948CA8A00575DF6 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +44,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EC720FA2194FAD8F0044E84F /* ListViewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListViewTableViewController.h; path = ../ListViewTableViewController.h; sourceTree = "<group>"; };
+		EC720FA3194FAD8F0044E84F /* ListViewTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListViewTableViewController.m; path = ../ListViewTableViewController.m; sourceTree = "<group>"; };
+		EC720FA8194FB25A0044E84F /* RootTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootTabBarController.h; sourceTree = "<group>"; };
+		EC720FA9194FB25A0044E84F /* RootTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootTabBarController.m; sourceTree = "<group>"; };
+		EC720FAC194FD1A50044E84F /* ListViewNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewNavigationController.h; sourceTree = "<group>"; };
+		EC720FAD194FD1A50044E84F /* ListViewNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewNavigationController.m; sourceTree = "<group>"; };
+		EC720FAF1950D4760044E84F /* AddItemToListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddItemToListViewController.h; sourceTree = "<group>"; };
+		EC720FB01950D4760044E84F /* AddItemToListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddItemToListViewController.m; sourceTree = "<group>"; };
+		EC720FB21950EA4B0044E84F /* DataModelElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModelElement.h; sourceTree = "<group>"; };
+		EC720FB31950EA4B0044E84F /* DataModelElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModelElement.m; sourceTree = "<group>"; };
 		ECDD272D1948B56F00575DF6 /* dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECDD27301948B56F00575DF6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ECDD27321948B56F00575DF6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -48,16 +66,20 @@
 		ECDD27401948B56F00575DF6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		ECDD27431948B56F00575DF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		ECDD27461948B56F00575DF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		ECDD27481948B56F00575DF6 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		ECDD27491948B56F00575DF6 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		ECDD274B1948B56F00575DF6 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		ECDD274C1948B56F00575DF6 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		ECDD27481948B56F00575DF6 /* TracksViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TracksViewController.h; sourceTree = "<group>"; };
+		ECDD27491948B56F00575DF6 /* TracksViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TracksViewController.m; sourceTree = "<group>"; };
 		ECDD274E1948B56F00575DF6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		ECDD27541948B56F00575DF6 /* devTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = devTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECDD27551948B56F00575DF6 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		ECDD275D1948B56F00575DF6 /* devTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "devTests-Info.plist"; sourceTree = "<group>"; };
 		ECDD275F1948B56F00575DF6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ECDD27611948B56F00575DF6 /* devTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = devTests.m; sourceTree = "<group>"; };
+		ECDD276B1948C3EB00575DF6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		ECDD276D1948C6E600575DF6 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		ECDD276E1948C6E600575DF6 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		ECDD27701948C70B00575DF6 /* LocationDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDataController.h; sourceTree = "<group>"; };
+		ECDD27711948C70B00575DF6 /* LocationDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDataController.m; sourceTree = "<group>"; };
+		ECDD27731948CA8A00575DF6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +87,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECDD27741948CA8A00575DF6 /* CoreLocation.framework in Frameworks */,
+				ECDD276C1948C3EB00575DF6 /* MapKit.framework in Frameworks */,
 				ECDD27331948B56F00575DF6 /* CoreGraphics.framework in Frameworks */,
 				ECDD27351948B56F00575DF6 /* UIKit.framework in Frameworks */,
 				ECDD27311948B56F00575DF6 /* Foundation.framework in Frameworks */,
@@ -84,6 +108,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EC720FAB194FD1720044E84F /* ListViewPath */ = {
+			isa = PBXGroup;
+			children = (
+				EC720FA2194FAD8F0044E84F /* ListViewTableViewController.h */,
+				EC720FA3194FAD8F0044E84F /* ListViewTableViewController.m */,
+				EC720FAC194FD1A50044E84F /* ListViewNavigationController.h */,
+				EC720FAD194FD1A50044E84F /* ListViewNavigationController.m */,
+				EC720FAF1950D4760044E84F /* AddItemToListViewController.h */,
+				EC720FB01950D4760044E84F /* AddItemToListViewController.m */,
+			);
+			name = ListViewPath;
+			sourceTree = "<group>";
+		};
 		ECDD27241948B56F00575DF6 = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +143,8 @@
 		ECDD272F1948B56F00575DF6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ECDD27731948CA8A00575DF6 /* CoreLocation.framework */,
+				ECDD276B1948C3EB00575DF6 /* MapKit.framework */,
 				ECDD27301948B56F00575DF6 /* Foundation.framework */,
 				ECDD27321948B56F00575DF6 /* CoreGraphics.framework */,
 				ECDD27341948B56F00575DF6 /* UIKit.framework */,
@@ -117,16 +156,23 @@
 		ECDD27361948B56F00575DF6 /* dev */ = {
 			isa = PBXGroup;
 			children = (
+				EC720FB21950EA4B0044E84F /* DataModelElement.h */,
+				EC720FB31950EA4B0044E84F /* DataModelElement.m */,
+				EC720FAB194FD1720044E84F /* ListViewPath */,
 				ECDD273F1948B56F00575DF6 /* AppDelegate.h */,
 				ECDD27401948B56F00575DF6 /* AppDelegate.m */,
 				ECDD27421948B56F00575DF6 /* Main_iPhone.storyboard */,
 				ECDD27451948B56F00575DF6 /* Main_iPad.storyboard */,
-				ECDD27481948B56F00575DF6 /* FirstViewController.h */,
-				ECDD27491948B56F00575DF6 /* FirstViewController.m */,
-				ECDD274B1948B56F00575DF6 /* SecondViewController.h */,
-				ECDD274C1948B56F00575DF6 /* SecondViewController.m */,
+				EC720FA8194FB25A0044E84F /* RootTabBarController.h */,
+				EC720FA9194FB25A0044E84F /* RootTabBarController.m */,
+				ECDD27481948B56F00575DF6 /* TracksViewController.h */,
+				ECDD27491948B56F00575DF6 /* TracksViewController.m */,
 				ECDD274E1948B56F00575DF6 /* Images.xcassets */,
 				ECDD27371948B56F00575DF6 /* Supporting Files */,
+				ECDD276D1948C6E600575DF6 /* Location.h */,
+				ECDD276E1948C6E600575DF6 /* Location.m */,
+				ECDD27701948C70B00575DF6 /* LocationDataController.h */,
+				ECDD27711948C70B00575DF6 /* LocationDataController.m */,
 			);
 			path = dev;
 			sourceTree = "<group>";
@@ -258,9 +304,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECDD274D1948B56F00575DF6 /* SecondViewController.m in Sources */,
+				ECDD276F1948C6E600575DF6 /* Location.m in Sources */,
+				ECDD27721948C70B00575DF6 /* LocationDataController.m in Sources */,
+				EC720FB41950EA4B0044E84F /* DataModelElement.m in Sources */,
 				ECDD27411948B56F00575DF6 /* AppDelegate.m in Sources */,
-				ECDD274A1948B56F00575DF6 /* FirstViewController.m in Sources */,
+				EC720FB11950D4760044E84F /* AddItemToListViewController.m in Sources */,
+				EC720FA4194FAD8F0044E84F /* ListViewTableViewController.m in Sources */,
+				EC720FAE194FD1A50044E84F /* ListViewNavigationController.m in Sources */,
+				EC720FAA194FB25A0044E84F /* RootTabBarController.m in Sources */,
+				ECDD274A1948B56F00575DF6 /* TracksViewController.m in Sources */,
 				ECDD273D1948B56F00575DF6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -476,6 +528,7 @@
 				ECDD27671948B56F00575DF6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ECDD27681948B56F00575DF6 /* Build configuration list for PBXNativeTarget "devTests" */ = {
 			isa = XCConfigurationList;
@@ -484,6 +537,7 @@
 				ECDD276A1948B56F00575DF6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
