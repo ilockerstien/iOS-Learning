@@ -68,7 +68,6 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="m4T-VZ-Amm">
                             <connections>
-                                <action selector="addButtonPress:" destination="fUZ-a2-zB1" id="mcC-Y9-5pQ"/>
                                 <segue destination="kJT-PE-EJO" kind="push" identifier="AddButtonSegue" id="hmO-NI-C03"/>
                             </connections>
                         </barButtonItem>
