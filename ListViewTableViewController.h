@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import "DataModelElement.h"
+#import <CoreData/CoreData.h>
 
-@interface ListViewTableViewController : UITableViewController <CLLocationManagerDelegate>
-@property (weak, nonatomic) NSMutableArray *dataModel;
+@interface ListViewTableViewController : UITableViewController <CLLocationManagerDelegate, NSFetchedResultsControllerDelegate>
+
 
 @end

@@ -27,7 +27,6 @@ CLLocationManager *manager;
     manager = [[CLLocationManager alloc] init];
     manager.delegate = self;
     _mapView.showsUserLocation = YES;
-    self.dataModel = ((RootTabBarController *)self.tabBarController).dataModel;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -42,11 +41,7 @@ CLLocationManager *manager;
     NSLog(@"Tracksviewcontroller will disappear");
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 #pragma mark CLLocationManager Delegate Methods
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{

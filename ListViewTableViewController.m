@@ -9,6 +9,9 @@
 #import "ListViewTableViewController.h"
 #import "ListViewNavigationController.h"
 #import "AddItemToListViewController.h"
+#import "AppDelegate.h"
+#import "ItemTableCell.h"
+#import "ListItem.h"
 
 
 @interface ListViewTableViewController ()
@@ -19,6 +22,10 @@
     
     CLLocationManager *manager;
     CLLocation *currentLocation;
+    
+    NSManagedObjectContext *managedContextObject;
+    NSFetchRequest *fetchRequest;
+    NSFetchedResultsController *fetchedResultsController;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -39,10 +46,43 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.dataModel = ((ListViewNavigationController *)self.navigationController).dataModel;
     manager = [[CLLocationManager alloc] init];
     manager.delegate = self;
     currentLocation = nil;
+    
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    
+    managedContextObject = appDelegate.managedObjectContext;
+    
+    
+    fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"ListItem"];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                        initWithKey:@"date"
+                                        ascending:NO];
+    
+    [fetchRequest setSortDescriptors:@[sortDescriptor]];
+    
+    fetchedResultsController = [[NSFetchedResultsController alloc]
+                                initWithFetchRequest:fetchRequest
+                                managedObjectContext:managedContextObject
+                                sectionNameKeyPath:nil
+                                cacheName:nil];
+    fetchedResultsController.delegate = self;
+    
+    NSError *error = nil;
+    [fetchedResultsController performFetch:&error];
+    
+    if (error != nil) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+
+    
+    
+
+    
 }
 
 
@@ -66,11 +106,6 @@
 
 - (IBAction)addButtonPress:(id)sender {
     NSLog(@"Add button pressed");
-/*
-    DataModelElement *newModel;
-    newModel = [[DataModelElement alloc] init];
-    newModel.timeEntered = [NSDate date];
- */
 }
 
 #pragma mark Unwind Segues from AddItemToListViewController
@@ -81,21 +116,30 @@
 
 -(IBAction)doneEditor:(UIStoryboardSegue*)segue{
     NSLog(@"Done editor");
+    NSError *errr;
+    [managedContextObject save:&errr];
     AddItemToListViewController *addItemController = segue.sourceViewController;
-    DataModelElement *addItem = addItemController.addItem;
-    if (currentLocation != nil){
-        addItem.location = currentLocation;
-        addItem.timeEntered = [NSDate date];
-        if (addItem.image != nil){
-            NSLog(@"NotNil");
-        } else {
-            NSLog(@"Nil");
-        }
-        addItem.description = [NSString stringWithFormat:@"Item#%lu", [self.dataModel count]+1];
-        [self.dataModel addObject:addItem];
-        [self.tableView reloadData];
-    }
+
+    ListItem *newItem = [NSEntityDescription
+                         insertNewObjectForEntityForName:@"ListItem"
+                         inManagedObjectContext:managedContextObject];
     
+    newItem.date = [NSDate date];
+    newItem.image = UIImagePNGRepresentation(addItemController.imageView.image);
+    newItem.desc = addItemController.descript.text;
+    NSNumber *cost;
+    cost = [NSNumber numberWithInteger:[addItemController.cost.text integerValue]];
+    newItem.cost = cost;
+
+    
+
+    
+    if (errr != nil) {
+        NSLog(@"Unresolved error %@, %@", errr, [errr userInfo]);
+        abort();
+    }
+    [managedContextObject save:&errr];
+    [fetchedResultsController performFetch:&errr];
 }
 
 
@@ -119,26 +163,29 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return [[fetchedResultsController sections] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.dataModel count];
-
+    return [[fetchedResultsController sections] count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FoodNDrinkCell" forIndexPath:indexPath];
-    
-    // Configure the cell...
-
-    if ([self.dataModel count] > 0){
-        cell.textLabel.text = ((DataModelElement *)[self.dataModel objectAtIndex:indexPath.row]).description;
-        cell.imageView.image = ((DataModelElement *)[self.dataModel objectAtIndex:indexPath.row]).image;
+    static NSString *CellIdentifier = @"FoodNDrinkCell";
+    ItemTableCell *cell = [tableView
+                              dequeueReusableCellWithIdentifier:CellIdentifier
+                              forIndexPath:indexPath];
+    NSLog(@"Row: %ld, Section: %ld", (long)indexPath.row, (long)indexPath.section);
+    if (indexPath.row != 0){
+        cell.item = [fetchedResultsController objectAtIndexPath:indexPath];
+        [cell configureCell];
+    }
+    else {
+        [cell configureEmptyCell];
     }
     return cell;
 }
@@ -192,5 +239,50 @@
     // Pass the selected object to the new view controller.
 }
 */
+#pragma mark - NSFetchedResultsControllerDelegate
 
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.tableView beginUpdates];
+}
+
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.tableView endUpdates];
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller
+   didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath
+     forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath {
+    
+    UITableView *tableView = self.tableView;
+    
+    switch(type) {
+        case NSFetchedResultsChangeInsert:
+            [tableView insertRowsAtIndexPaths:@[newIndexPath]
+                             withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [tableView deleteRowsAtIndexPaths:@[indexPath]
+                             withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+            //        case NSFetchedResultsChangeUpdate:
+            //            code to update the content of the cell at indexPath
+            //            break;
+            
+            //        case NSFetchedResultsChangeMove:
+            //            [tableView deleteRowsAtIndexPaths:@[indexPath]
+            //                             withRowAnimation:UITableViewRowAnimationFade];
+            //            [tableView insertRowsAtIndexPaths:@[newIndexPath]
+            //                             withRowAnimation:UITableViewRowAnimationFade];
+            //            break;
+            
+    }
+}
 @end

@@ -7,13 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DataModelElement.h"
 
 @interface AddItemToListViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
--(IBAction)unwindFromAddListToListView:(UIStoryboardSegue*)segue;
-@property (strong, nonatomic) DataModelElement *addItem;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 
+@property (weak, nonatomic) IBOutlet UILabel *cost;
+@property (weak, nonatomic) IBOutlet UITextField *descript;
 
 @end

@@ -30,8 +30,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.dataModel = ((RootTabBarController *)self.tabBarController).dataModel;
-    ([self.dataModel count]>0) ? NSLog([self.dataModel objectAtIndex:0]) : NSLog(@"Empty Model");
 }
 
 

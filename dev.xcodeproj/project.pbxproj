@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC4BAEEA195364F500CFF83F /* CDModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EC4BAEE8195364F500CFF83F /* CDModel.xcdatamodeld */; };
+		EC4BAEED1953675800CFF83F /* ListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4BAEEC1953675800CFF83F /* ListItem.m */; };
+		EC4BAEEF1953678500CFF83F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC4BAEEE1953678500CFF83F /* CoreData.framework */; };
+		EC4BAEF2195792C200CFF83F /* ItemTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4BAEF1195792C200CFF83F /* ItemTableCell.m */; };
 		EC720FA4194FAD8F0044E84F /* ListViewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC720FA3194FAD8F0044E84F /* ListViewTableViewController.m */; };
 		EC720FAA194FB25A0044E84F /* RootTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC720FA9194FB25A0044E84F /* RootTabBarController.m */; };
 		EC720FAE194FD1A50044E84F /* ListViewNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC720FAD194FD1A50044E84F /* ListViewNavigationController.m */; };
 		EC720FB11950D4760044E84F /* AddItemToListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC720FB01950D4760044E84F /* AddItemToListViewController.m */; };
-		EC720FB41950EA4B0044E84F /* DataModelElement.m in Sources */ = {isa = PBXBuildFile; fileRef = EC720FB31950EA4B0044E84F /* DataModelElement.m */; };
 		ECDD27311948B56F00575DF6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECDD27301948B56F00575DF6 /* Foundation.framework */; };
 		ECDD27331948B56F00575DF6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECDD27321948B56F00575DF6 /* CoreGraphics.framework */; };
 		ECDD27351948B56F00575DF6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECDD27341948B56F00575DF6 /* UIKit.framework */; };
@@ -44,6 +47,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EC4BAEE9195364F500CFF83F /* CDModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CDModel.xcdatamodel; sourceTree = "<group>"; };
+		EC4BAEEB1953675800CFF83F /* ListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListItem.h; sourceTree = "<group>"; };
+		EC4BAEEC1953675800CFF83F /* ListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListItem.m; sourceTree = "<group>"; };
+		EC4BAEEE1953678500CFF83F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		EC4BAEF0195792C200CFF83F /* ItemTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemTableCell.h; sourceTree = "<group>"; };
+		EC4BAEF1195792C200CFF83F /* ItemTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTableCell.m; sourceTree = "<group>"; };
 		EC720FA2194FAD8F0044E84F /* ListViewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListViewTableViewController.h; path = ../ListViewTableViewController.h; sourceTree = "<group>"; };
 		EC720FA3194FAD8F0044E84F /* ListViewTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListViewTableViewController.m; path = ../ListViewTableViewController.m; sourceTree = "<group>"; };
 		EC720FA8194FB25A0044E84F /* RootTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootTabBarController.h; sourceTree = "<group>"; };
@@ -52,8 +61,6 @@
 		EC720FAD194FD1A50044E84F /* ListViewNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewNavigationController.m; sourceTree = "<group>"; };
 		EC720FAF1950D4760044E84F /* AddItemToListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddItemToListViewController.h; sourceTree = "<group>"; };
 		EC720FB01950D4760044E84F /* AddItemToListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddItemToListViewController.m; sourceTree = "<group>"; };
-		EC720FB21950EA4B0044E84F /* DataModelElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModelElement.h; sourceTree = "<group>"; };
-		EC720FB31950EA4B0044E84F /* DataModelElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModelElement.m; sourceTree = "<group>"; };
 		ECDD272D1948B56F00575DF6 /* dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECDD27301948B56F00575DF6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ECDD27321948B56F00575DF6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -87,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC4BAEEF1953678500CFF83F /* CoreData.framework in Frameworks */,
 				ECDD27741948CA8A00575DF6 /* CoreLocation.framework in Frameworks */,
 				ECDD276C1948C3EB00575DF6 /* MapKit.framework in Frameworks */,
 				ECDD27331948B56F00575DF6 /* CoreGraphics.framework in Frameworks */,
@@ -117,6 +125,8 @@
 				EC720FAD194FD1A50044E84F /* ListViewNavigationController.m */,
 				EC720FAF1950D4760044E84F /* AddItemToListViewController.h */,
 				EC720FB01950D4760044E84F /* AddItemToListViewController.m */,
+				EC4BAEF0195792C200CFF83F /* ItemTableCell.h */,
+				EC4BAEF1195792C200CFF83F /* ItemTableCell.m */,
 			);
 			name = ListViewPath;
 			sourceTree = "<group>";
@@ -143,6 +153,7 @@
 		ECDD272F1948B56F00575DF6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EC4BAEEE1953678500CFF83F /* CoreData.framework */,
 				ECDD27731948CA8A00575DF6 /* CoreLocation.framework */,
 				ECDD276B1948C3EB00575DF6 /* MapKit.framework */,
 				ECDD27301948B56F00575DF6 /* Foundation.framework */,
@@ -156,8 +167,9 @@
 		ECDD27361948B56F00575DF6 /* dev */ = {
 			isa = PBXGroup;
 			children = (
-				EC720FB21950EA4B0044E84F /* DataModelElement.h */,
-				EC720FB31950EA4B0044E84F /* DataModelElement.m */,
+				EC4BAEE8195364F500CFF83F /* CDModel.xcdatamodeld */,
+				EC4BAEEB1953675800CFF83F /* ListItem.h */,
+				EC4BAEEC1953675800CFF83F /* ListItem.m */,
 				EC720FAB194FD1720044E84F /* ListViewPath */,
 				ECDD273F1948B56F00575DF6 /* AppDelegate.h */,
 				ECDD27401948B56F00575DF6 /* AppDelegate.m */,
@@ -306,12 +318,14 @@
 			files = (
 				ECDD276F1948C6E600575DF6 /* Location.m in Sources */,
 				ECDD27721948C70B00575DF6 /* LocationDataController.m in Sources */,
-				EC720FB41950EA4B0044E84F /* DataModelElement.m in Sources */,
+				EC4BAEED1953675800CFF83F /* ListItem.m in Sources */,
+				EC4BAEEA195364F500CFF83F /* CDModel.xcdatamodeld in Sources */,
 				ECDD27411948B56F00575DF6 /* AppDelegate.m in Sources */,
 				EC720FB11950D4760044E84F /* AddItemToListViewController.m in Sources */,
 				EC720FA4194FAD8F0044E84F /* ListViewTableViewController.m in Sources */,
 				EC720FAE194FD1A50044E84F /* ListViewNavigationController.m in Sources */,
 				EC720FAA194FB25A0044E84F /* RootTabBarController.m in Sources */,
+				EC4BAEF2195792C200CFF83F /* ItemTableCell.m in Sources */,
 				ECDD274A1948B56F00575DF6 /* TracksViewController.m in Sources */,
 				ECDD273D1948B56F00575DF6 /* main.m in Sources */,
 			);
@@ -540,6 +554,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EC4BAEE8195364F500CFF83F /* CDModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EC4BAEE9195364F500CFF83F /* CDModel.xcdatamodel */,
+			);
+			currentVersion = EC4BAEE9195364F500CFF83F /* CDModel.xcdatamodel */;
+			name = CDModel.xcdatamodeld;
+			path = ../CDModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = ECDD27251948B56F00575DF6 /* Project object */;
 }

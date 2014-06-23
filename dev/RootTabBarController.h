@@ -10,5 +10,4 @@
 
 @interface RootTabBarController : UITabBarController
 
-@property (weak, nonatomic) NSMutableArray *dataModel;
 @end

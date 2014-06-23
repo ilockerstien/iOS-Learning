@@ -14,6 +14,5 @@
 
 @interface TracksViewController : UIViewController <CLLocationManagerDelegate>
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
-@property (weak, nonatomic) NSMutableArray *dataModel;
 
 @end

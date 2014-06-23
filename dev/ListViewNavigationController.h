@@ -10,6 +10,5 @@
 
 @interface ListViewNavigationController : UINavigationController 
 
-@property (weak, nonatomic) NSMutableArray *dataModel;
 
 @end
