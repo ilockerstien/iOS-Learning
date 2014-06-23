@@ -63,7 +63,7 @@
                                         ascending:NO];
     
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
-    [fetchRequest setFetchBatchSize:20];
+    [fetchRequest setFetchLimit:20];
     fetchedResultsController = [[NSFetchedResultsController alloc]
                                 initWithFetchRequest:fetchRequest
                                 managedObjectContext:managedContextObject
