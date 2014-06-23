@@ -61,6 +61,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="List View" id="fzQ-IB-7Ib">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="ru8-Jz-9xn">
+                            <connections>
+                                <action selector="addFakeItem:" destination="fUZ-a2-zB1" id="riq-U5-Xt9"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="m4T-VZ-Amm">
                             <connections>
                                 <action selector="addButtonPress:" destination="fUZ-a2-zB1" id="mcC-Y9-5pQ"/>

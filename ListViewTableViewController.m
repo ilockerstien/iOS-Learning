@@ -54,7 +54,7 @@
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
     managedContextObject = appDelegate.managedObjectContext;
-    
+    NSError *error = nil;
     
     fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"ListItem"];
     
@@ -63,16 +63,23 @@
                                         ascending:NO];
     
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
-    
+    [fetchRequest setFetchBatchSize:20];
     fetchedResultsController = [[NSFetchedResultsController alloc]
                                 initWithFetchRequest:fetchRequest
                                 managedObjectContext:managedContextObject
                                 sectionNameKeyPath:nil
                                 cacheName:nil];
     fetchedResultsController.delegate = self;
-    
-    NSError *error = nil;
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:@"ListItem" inManagedObjectContext:managedContextObject]];
+    NSArray *tmpArray = [managedContextObject executeFetchRequest:request error:&error];
+    for (int i = 0; i<[tmpArray count]; i++){
+        NSLog(@"date:%@", ((ListItem*)tmpArray[i]).date);
+        NSLog(@"Desc:%@", ((ListItem*)tmpArray[i]).desc);
+    }
+    NSLog(@"Tmp Array:%ld", [tmpArray count]);
     [fetchedResultsController performFetch:&error];
+    NSLog(@"fetchedResultsController #Objects:%ld", [[fetchedResultsController fetchedObjects] count]);
     
     if (error != nil) {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
@@ -114,6 +121,85 @@
     NSLog(@"Cancel editor");
 }
 
+-(void)createFakeItem{
+    NSLog(@"Done editor");
+    NSError *errr;
+    ListItem *newItem = [NSEntityDescription
+                         insertNewObjectForEntityForName:@"ListItem"
+                         inManagedObjectContext:managedContextObject];
+    
+    newItem.date = [NSDate date];
+    newItem.image = nil;
+    newItem.desc = @"Fake Item";
+    newItem.cost = [NSNumber numberWithInt:8];
+    
+    
+    
+    
+    if (errr != nil) {
+        NSLog(@"Unresolved error %@, %@", errr, [errr userInfo]);
+        abort();
+    }
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    [appDelegate saveContext];
+}
+
+-(void)createFakeItem2{
+    NSLog(@"Done editor");
+    NSError *errr;
+    ListItem *newItem = [NSEntityDescription
+                         insertNewObjectForEntityForName:@"ListItem"
+                         inManagedObjectContext:managedContextObject];
+    
+    newItem.date = [NSDate date];
+    newItem.image = nil;
+    newItem.desc = @"Fake Item2";
+    newItem.cost = [NSNumber numberWithInt:8];
+    
+    
+    
+    
+    if (errr != nil) {
+        NSLog(@"Unresolved error %@, %@", errr, [errr userInfo]);
+        abort();
+    }
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    [appDelegate saveContext];
+}
+
+
+- (IBAction)addFakeItem:(id)sender {
+    NSLog(@"Done editor");
+    NSError *errr;
+    
+    ListItem *newItem = [NSEntityDescription
+                         insertNewObjectForEntityForName:@"ListItem"
+                         inManagedObjectContext:managedContextObject];
+    NSError *error;
+    newItem.date = [NSDate date];
+    newItem.image = nil;
+    newItem.desc = @"Fake Item12";
+    newItem.cost = [NSNumber numberWithInt:8];
+        if (errr != nil) {
+        NSLog(@"Unresolved error %@, %@", errr, [errr userInfo]);
+        abort();
+    }
+
+
+
+    if (managedContextObject != nil) {
+        if ([managedContextObject hasChanges] && ![managedContextObject save:&error]) {
+            // Replace this implementation with code to handle the error appropriately.
+            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+    }
+    [fetchedResultsController performFetch:&errr];
+    [self.tableView reloadData];
+}
+
+
 -(IBAction)doneEditor:(UIStoryboardSegue*)segue{
     NSLog(@"Done editor");
     NSError *errr;
@@ -125,7 +211,7 @@
                          inManagedObjectContext:managedContextObject];
     
     newItem.date = [NSDate date];
-    newItem.image = UIImagePNGRepresentation(addItemController.imageView.image);
+    newItem.image = nil;
     newItem.desc = addItemController.descript.text;
     NSNumber *cost;
     cost = [NSNumber numberWithInteger:[addItemController.cost.text integerValue]];
@@ -139,7 +225,6 @@
         abort();
     }
     [managedContextObject save:&errr];
-    [fetchedResultsController performFetch:&errr];
 }
 
 
@@ -165,28 +250,28 @@
     // Return the number of sections.
     return [[fetchedResultsController sections] count];
 }
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return [[fetchedResultsController sections] count];
+    id <NSFetchedResultsSectionInfo> sectionInfo;
+    sectionInfo = [fetchedResultsController sections][section];
+    
+    return [sectionInfo numberOfObjects];
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"FoodNDrinkCell";
     ItemTableCell *cell = [tableView
                               dequeueReusableCellWithIdentifier:CellIdentifier
                               forIndexPath:indexPath];
-    NSLog(@"Row: %ld, Section: %ld", (long)indexPath.row, (long)indexPath.section);
-    if (indexPath.row != 0){
-        cell.item = [fetchedResultsController objectAtIndexPath:indexPath];
-        [cell configureCell];
-    }
-    else {
-        [cell configureEmptyCell];
-    }
+    NSLog(@"tableView cellforrowatindexpath Row:%ld Section:%ld", indexPath.row, indexPath.section);
+    cell.item = [fetchedResultsController objectAtIndexPath:indexPath];
+    NSLog(@"tableView cellforrowatindexpath Date:%@", cell.item.date);
+    [cell configureCell];
+    
     return cell;
 }
 
@@ -263,6 +348,8 @@
     
     switch(type) {
         case NSFetchedResultsChangeInsert:
+            NSLog(@"newIndexPath: Row%ld, Section %ld", newIndexPath.row, newIndexPath.section);
+            NSLog(@"Number of table rows:%ld", [tableView numberOfRowsInSection:0]);
             [tableView insertRowsAtIndexPaths:@[newIndexPath]
                              withRowAnimation:UITableViewRowAnimationFade];
             break;
@@ -272,16 +359,16 @@
                              withRowAnimation:UITableViewRowAnimationFade];
             break;
             
-            //        case NSFetchedResultsChangeUpdate:
-            //            code to update the content of the cell at indexPath
-            //            break;
+            case NSFetchedResultsChangeUpdate:
+                NSLog(@"ChangeUpdate");
+                break;
             
-            //        case NSFetchedResultsChangeMove:
-            //            [tableView deleteRowsAtIndexPaths:@[indexPath]
-            //                             withRowAnimation:UITableViewRowAnimationFade];
-            //            [tableView insertRowsAtIndexPaths:@[newIndexPath]
-            //                             withRowAnimation:UITableViewRowAnimationFade];
-            //            break;
+            case NSFetchedResultsChangeMove:
+                [tableView deleteRowsAtIndexPaths:@[indexPath]
+                                    withRowAnimation:UITableViewRowAnimationFade];
+                [tableView insertRowsAtIndexPaths:@[newIndexPath]
+                                    withRowAnimation:UITableViewRowAnimationFade];
+            break;
             
     }
 }
