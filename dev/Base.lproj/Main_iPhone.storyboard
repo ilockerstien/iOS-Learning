@@ -61,19 +61,28 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="List View" id="fzQ-IB-7Ib">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="ru8-Jz-9xn">
-                            <connections>
-                                <action selector="addFakeItem:" destination="fUZ-a2-zB1" id="riq-U5-Xt9"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="m4T-VZ-Amm">
                             <connections>
                                 <segue destination="kJT-PE-EJO" kind="push" identifier="AddButtonSegue" id="hmO-NI-C03"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="doneButton" destination="dVz-ar-c03" id="fuJ-5u-ces"/>
+                        <outlet property="editButton" destination="yLA-dc-oOJ" id="VTR-VW-lPu"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1RH-tm-JW9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem title="Done" id="dVz-ar-c03">
+                    <connections>
+                        <action selector="editTableView:" destination="fUZ-a2-zB1" id="clg-hh-hdP"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem title="Edit" id="yLA-dc-oOJ">
+                    <connections>
+                        <action selector="editTableView:" destination="fUZ-a2-zB1" id="vbn-ng-19A"/>
+                    </connections>
+                </barButtonItem>
             </objects>
             <point key="canvasLocation" x="1161" y="685"/>
         </scene>
@@ -123,17 +132,10 @@
                                 <rect key="frame" x="0.0" y="69" width="320" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cost:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNH-pj-Mzp">
-                                <rect key="frame" x="0.0" y="122" width="75" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y74-hl-npr">
-                                <rect key="frame" x="95" y="122" width="85" height="29"/>
+                                <rect key="frame" x="122" y="122" width="85" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="highlightedColor"/>
@@ -160,6 +162,17 @@
                                     <action selector="decreaseCost:" destination="kJT-PE-EJO" eventType="touchUpInside" id="VgA-Ef-wRR"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9oh-Vf-VTy">
+                                <rect key="frame" x="20" y="113" width="108" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Ordered">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="orderPayPressed:" destination="kJT-PE-EJO" eventType="touchUpInside" id="oi3-1t-uS2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -179,6 +192,7 @@
                         <outlet property="cost" destination="y74-hl-npr" id="crB-Zw-ikx"/>
                         <outlet property="descript" destination="0KS-kX-h5v" id="lP7-i1-M8L"/>
                         <outlet property="imageView" destination="mf6-ie-p0V" id="SOQ-Y3-Lce"/>
+                        <outlet property="orderPayButton" destination="9oh-Vf-VTy" id="T3o-PW-tix"/>
                         <outlet property="overlayView" destination="mf6-ie-p0V" id="fW8-2H-TnC"/>
                     </connections>
                 </viewController>

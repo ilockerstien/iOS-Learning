@@ -11,6 +11,8 @@
 #import <CoreData/CoreData.h>
 
 @interface ListViewTableViewController : UITableViewController <CLLocationManagerDelegate, NSFetchedResultsControllerDelegate>
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *editButton;
 
 @end

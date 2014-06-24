@@ -63,7 +63,7 @@
                                         ascending:NO];
     
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
-    [fetchRequest setFetchLimit:20];
+   // [fetchRequest setFetchLimit:20];
     fetchedResultsController = [[NSFetchedResultsController alloc]
                                 initWithFetchRequest:fetchRequest
                                 managedObjectContext:managedContextObject
@@ -78,7 +78,7 @@
         abort();
     }
 
-    
+    self.navigationItem.leftBarButtonItem = self.editButton;
     
 
     
@@ -111,6 +111,15 @@
 }
 
 
+- (IBAction)editTableView:(id)sender {
+    BOOL startEdit = (sender == self.editButton);
+    
+    UIBarButtonItem *nextButton = (startEdit) ?
+    self.doneButton : self.editButton;
+    
+    [self.navigationItem setLeftBarButtonItem:nextButton animated:YES];
+    [self.tableView setEditing:startEdit animated:YES];
+}
 
 
 -(IBAction)doneEditor:(UIStoryboardSegue*)segue{
@@ -189,23 +198,30 @@
 }
 
 
-/*
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+        [managedContextObject deleteObject:[fetchedResultsController
+                                            objectAtIndexPath:indexPath]];
+        
+        NSError *error = nil;
+        
+        [managedContextObject save:&error];
+        
+        if (error != nil) {
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+    }
 }
-*/
 /*
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath

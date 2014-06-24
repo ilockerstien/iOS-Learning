@@ -56,6 +56,14 @@
     self.cost.text = [NSString stringWithFormat:@"%ld", [self.cost.text integerValue]-1];
 }
 
+- (IBAction)orderPayPressed:(id)sender {
+    NSLog(@"orderPayButton Text:%@", self.orderPayButton.titleLabel.text);
+    if ([self.orderPayButton.titleLabel.text isEqual:@"Ordered"]){
+        [self.orderPayButton setTitle:@"Paid" forState:UIControlStateNormal];
+    } else {
+        [self.orderPayButton setTitle:@"Ordered" forState:UIControlStateNormal];
+    }
+}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"AddToListCancelToListView"]){

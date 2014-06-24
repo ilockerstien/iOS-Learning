@@ -14,5 +14,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *cost;
 @property (weak, nonatomic) IBOutlet UITextField *descript;
+@property (weak, nonatomic) IBOutlet UIButton *orderPayButton;
 
 @end
