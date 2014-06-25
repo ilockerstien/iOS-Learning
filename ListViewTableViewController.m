@@ -26,6 +26,9 @@
     NSManagedObjectContext *managedContextObject;
     NSFetchRequest *fetchRequest;
     NSFetchedResultsController *fetchedResultsController;
+    BOOL locationIsFresh;
+    float lastLatitude;
+    float lastLongitude;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -108,6 +111,7 @@
 
 -(IBAction)cancelEditor:(UIStoryboardSegue *)segue{
     NSLog(@"Cancel editor");
+    [manager stopUpdatingLocation];
 }
 
 
@@ -133,11 +137,18 @@
                          inManagedObjectContext:managedContextObject];
     
     newItem.date = [NSDate date];
-    newItem.image = nil;
-    newItem.desc = addItemController.descript.text;
+    if (addItemController.imageView.image != nil){
+        newItem.image = UIImagePNGRepresentation(addItemController.imageView.image);
+    }
+    newItem.desc = addItemController.descript;
     NSNumber *cost;
-    cost = [NSNumber numberWithInteger:[addItemController.cost.text integerValue]];
+    cost = [NSNumber numberWithInteger:[addItemController.cost integerValue]];
     newItem.cost = cost;
+    NSLog(locationIsFresh?@"Fresh location":@"Location is NOT fresh");
+
+    newItem.latitude = [NSNumber numberWithFloat:lastLatitude];
+    newItem.longitude = [NSNumber numberWithFloat:lastLongitude];
+    [manager stopUpdatingLocation];
 
     
 
@@ -159,6 +170,7 @@
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
     currentLocation = [locations lastObject];
     if (currentLocation != nil){
+        locationIsFresh = YES;
         NSLog(@"%@",[NSString stringWithFormat:@"%.8f",currentLocation.coordinate.latitude]);
         NSLog(@"%@",[NSString stringWithFormat:@"%.8f",currentLocation.coordinate.longitude]);}
     
@@ -238,16 +250,30 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    locationIsFresh = NO;
+
+
+    if ([segue.identifier isEqualToString:@"AddButtonSegue"]){
+        [manager startUpdatingLocation];
+    }
+    if ([segue.identifier isEqualToString:@"ReviewItemSegue"]){
+        AddItemToListViewController *destinationController = [segue destinationViewController];
+        ItemTableCell *itemCell = (ItemTableCell *)sender;
+        NSLog(@"%@",itemCell.item.desc);
+        NSLog(@"%@",[NSString stringWithFormat:@"%@",itemCell.item.cost]);
+        destinationController.cost = [NSString stringWithFormat:@"%@",itemCell.item.cost];
+        destinationController.descript = itemCell.item.desc;
+    }
+    //AddItemToListViewController *destinationController= [segue destinationViewController];
+
 }
-*/
+
 #pragma mark - NSFetchedResultsControllerDelegate
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller

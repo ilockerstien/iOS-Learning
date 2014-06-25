@@ -33,7 +33,14 @@
 }
 
 - (void)configureCell{
-    self.detailTextLabel.text = self.item.desc;
+    self.textLabel.text = self.item.desc;
+    self.detailTextLabel.text = [NSString stringWithFormat:@"$%@",self.item.cost];
+    if (self.item.image != nil){
+        self.imageView.image = [UIImage imageWithData:self.item.image];
+    }
+    else {
+        self.imageView.image = nil;
+    }
 }
 
 

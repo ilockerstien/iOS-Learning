@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddItemToListViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface AddItemToListViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 
-@property (weak, nonatomic) IBOutlet UILabel *cost;
-@property (weak, nonatomic) IBOutlet UITextField *descript;
+@property (weak, nonatomic) IBOutlet UILabel *costLabel;
+@property (weak, nonatomic) IBOutlet UITextField *descriptField;
 @property (weak, nonatomic) IBOutlet UIButton *orderPayButton;
-
+@property (strong, nonatomic) NSString *cost;
+@property (strong, nonatomic) NSString *descript;
+@property (strong, nonatomic) UIImage *image;
 @end

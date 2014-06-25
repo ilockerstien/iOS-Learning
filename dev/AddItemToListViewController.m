@@ -33,6 +33,16 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.descriptField.delegate = self;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+
+    self.costLabel.text = self.cost;
+    NSLog(@"%@", self.costLabel.text);
+    self.descriptField.text = self.descript;
+//    self.imageView.image = self.image;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,20 +58,32 @@
     
     
 }
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [self.descriptField resignFirstResponder];
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    if (self.descriptField){
+        [self.descriptField resignFirstResponder];
+    }
+    return NO;
+}
+
 - (IBAction)increaseCost:(id)sender{
-    self.cost.text = [NSString stringWithFormat:@"%ld", [self.cost.text integerValue]+1];
+    self.costLabel.text = [NSString stringWithFormat:@"%ld", [self.costLabel.text integerValue]+1];
 }
 
 - (IBAction)decreaseCost:(id)sender {
-    self.cost.text = [NSString stringWithFormat:@"%ld", [self.cost.text integerValue]-1];
+    self.costLabel.text = [NSString stringWithFormat:@"%ld", [self.costLabel.text integerValue]-1];
 }
 
 - (IBAction)orderPayPressed:(id)sender {
     NSLog(@"orderPayButton Text:%@", self.orderPayButton.titleLabel.text);
-    if ([self.orderPayButton.titleLabel.text isEqual:@"Ordered"]){
-        [self.orderPayButton setTitle:@"Paid" forState:UIControlStateNormal];
+    if ([self.orderPayButton.titleLabel.text isEqual:@"Ordered $"]){
+        [self.orderPayButton setTitle:@"Paid $" forState:UIControlStateNormal];
     } else {
-        [self.orderPayButton setTitle:@"Ordered" forState:UIControlStateNormal];
+        [self.orderPayButton setTitle:@"Ordered $" forState:UIControlStateNormal];
     }
 }
 
